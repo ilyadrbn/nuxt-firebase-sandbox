@@ -16,7 +16,7 @@ const registerForm = reactive<IRegisterForm>({
         value: "",
         required: true,
         min: 3,
-        max: 15,
+        max: 50,
         requiredValidation: true,
         label: "Email",
     },
@@ -38,6 +38,12 @@ const registerForm = reactive<IRegisterForm>({
 });
 
 const tos = ref<boolean>(false);
+
+const isFieldFilled = computed(() => {
+    return Object.values(registerForm).every((field) =>
+        field.required ? field.value : true,
+    );
+});
 </script>
 
 <template>
@@ -72,6 +78,12 @@ const tos = ref<boolean>(false);
                 </v-tooltip>
             </template>
         </v-checkbox>
-        <v-btn class="mt-2" type="submit" block :disabled="!tos">Submit</v-btn>
+        <v-btn
+            class="mt-2"
+            type="submit"
+            block
+            :disabled="!isFieldFilled || !tos"
+            >Submit</v-btn
+        >
     </v-form>
 </template>

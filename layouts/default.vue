@@ -41,7 +41,7 @@ const items = ref<{ name: string; id: number }[]>([
                 link
             ></v-list-item>
             <template #append>
-                <AuthForm />
+                <AuthModal />
             </template>
         </v-navigation-drawer>
 

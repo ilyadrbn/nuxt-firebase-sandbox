@@ -1,4 +1,3 @@
-import { RegisterForm } from '../.nuxt/components';
 <script setup lang="ts">
 const dialog = ref<boolean>(false);
 const tab = ref<"register" | "login">("register");
@@ -6,7 +5,7 @@ const tab = ref<"register" | "login">("register");
 
 <template>
     <div class="pa-4 text-center">
-        <v-dialog v-model="dialog">
+        <v-dialog v-model="dialog" class="dialog-popup">
             <!-- ? Auth Button -->
             <template #activator="{ props: activatorProps }">
                 <v-btn
@@ -33,10 +32,10 @@ const tab = ref<"register" | "login">("register");
 
                     <v-tabs-window v-model="tab">
                         <v-tabs-window-item value="register">
-                            <RegisterForm />
+                            <AuthRegisterForm />
                         </v-tabs-window-item>
                         <v-tabs-window-item value="login">
-                            <LoginForm />
+                            <AuthLoginForm />
                         </v-tabs-window-item>
                     </v-tabs-window>
                 </v-card-text>
@@ -51,15 +50,14 @@ const tab = ref<"register" | "login">("register");
                         variant="plain"
                         @click="dialog = false"
                     ></v-btn>
-
-                    <v-btn
-                        color="primary"
-                        text="Save"
-                        variant="tonal"
-                        @click="dialog = false"
-                    ></v-btn>
                 </v-card-actions>
             </v-card>
         </v-dialog>
     </div>
 </template>
+
+<style lang="css" scoped>
+.dialog-popup ::v-deep .v-overlay__content {
+    width: initial;
+}
+</style>
