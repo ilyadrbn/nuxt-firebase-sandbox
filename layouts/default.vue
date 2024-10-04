@@ -1,6 +1,7 @@
+import { AuthForm } from '../.nuxt/components';
 <script setup lang="ts">
-const drawer = ref(false);
-const items = ref([
+const drawer = ref<boolean>(false);
+const items = ref<{ name: string; id: number }[]>([
     {
         name: "Item #1",
         id: 1,
@@ -39,6 +40,9 @@ const items = ref([
                 title="List Item 1"
                 link
             ></v-list-item>
+            <template #append>
+                <AuthForm />
+            </template>
         </v-navigation-drawer>
 
         <v-main class="d-flex align-center justify-center">
