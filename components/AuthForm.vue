@@ -1,5 +1,5 @@
 <script setup lang="ts"></script>
 
 <template>
-    <div>Page: index</div>
+    <div>Component: AuthForm</div>
 </template>
