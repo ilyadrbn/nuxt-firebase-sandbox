@@ -44,6 +44,10 @@ const isFieldFilled = computed(() => {
         field.required ? field.value : true,
     );
 });
+
+// async function register() {
+//     await
+// }
 </script>
 
 <template>
